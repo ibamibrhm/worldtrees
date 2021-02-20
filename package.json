@@ -3,13 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server/index.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server/index.js"
+  },
+  "prisma": {
+    "schema": "db/schema.prisma"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Ibrahim",
+    "url": "https://github.com/ibamibrhm"
   },
   "dependencies": {
+    "@prisma/client": "^2.17.0",
+    "adm-zip": "^0.5.3",
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
     "next": "10.0.7",
+    "papaparse": "^5.3.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "socket.io": "^3.1.1",
+    "socket.io-client": "^3.1.1"
+  },
+  "devDependencies": {
+    "prisma": "^2.17.0"
   }
 }
