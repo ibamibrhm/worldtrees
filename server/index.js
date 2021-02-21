@@ -12,6 +12,10 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
+if (!dev) {
+  require('newrelic');
+}
+
 io.on('connection', socket => {
   console.log('connected', socket.id)
   io.emit('init', Controller.init(socket))
