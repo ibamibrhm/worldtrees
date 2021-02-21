@@ -25,9 +25,15 @@ job.start();
 
 nextApp.prepare().then(() => {
   app.disable('x-powered-by');
-  app.set('socketIo', io);
 
-  app.use('/tree', treeHandler)
+  app.use('/tree', (req, res, next) => {
+    if (req.headers.authorization !== process.env.MASTER_TOKEN) {
+      return res.status(401).json({
+        message: 'Unauthorized'
+      })
+    }
+    next()
+  }, treeHandler)
 
   app.get('*', (req, res) => {
     return nextHandler(req, res);

@@ -13,7 +13,8 @@ module.exports = {
             id: 'desc'
           },
           select: {
-            total_tree: true
+            total_tree: true,
+            updated_at: true
           }
         })
         tree.total_tree = tree.total_tree.toString()
@@ -51,7 +52,8 @@ module.exports = {
           }
         },
         select: {
-          total_tree: true
+          total_tree: true,
+          updated_at: true
         }
       })
       updatedTree.total_tree = updatedTree.total_tree.toString()

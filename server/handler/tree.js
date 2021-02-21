@@ -91,10 +91,10 @@ router.get('/', async (_, res) => {
 
     console.log('end')
 
-    res.status(201).json(currentWorld)
+    return res.status(201).json(currentWorld)
   } catch (error) {
     console.log(error)
-    res.status(500).json(error)
+    return res.status(500).json(error)
   }
 })
 
