@@ -34,7 +34,7 @@ const Home = () => {
             <span>Trees in the World</span>
           </h3>
           <small className="card-text text-muted" title="DD/MM/YYYY">
-            Last update: {moment(new Date(tree.updated_at)).format('DD/MM/YYYY, hh:mm:ss')}
+            Last update: {moment(new Date(tree.updated_at)).format('DD/MM/YYYY, HH:mm:ss')}
           </small>
         </div>
       </div>
