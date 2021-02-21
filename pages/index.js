@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react'
-import moment from 'moment'
-import io from 'socket.io-client'
+import { useEffect, useState } from 'react';
+import moment from 'moment';
+import io from 'socket.io-client';
 
 const socket = io();
 
 const Home = () => {
   const [tree, setTree] = useState({
     total_tree: 0,
-    updated_at: null
-  })
+    updated_at: null,
+  });
 
   useEffect(() => {
     socket.on('tree', (data) => {
-      setTree(data)
-    })
-  }, [])
+      setTree(data);
+    });
+  }, []);
 
   if (!tree.updated_at) {
-    return null
+    return null;
   }
 
   return (
@@ -49,6 +49,7 @@ const Home = () => {
           <a
             href="https://eoimages.gsfc.nasa.gov/images/imagerecords/86000/86986/globaltreecover10pct_etm_2000_2009_front.jpg"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="card-img"
@@ -66,6 +67,7 @@ const Home = () => {
                   <a
                     href="http://www.takepart.com/article/2015/09/03/more-trees-3-trillion-humans-cut-down-half"
                     target="_blank"
+                    rel="noreferrer"
                     className="text-dark"
                   >
                     takepart
@@ -93,6 +95,7 @@ const Home = () => {
                   <a
                     href="https://blogs.worldbank.org/climatechange/save-forests-think-beyond-trees"
                     target="_blank"
+                    rel="noreferrer"
                     className="text-dark"
                   >
                     worldbank
@@ -112,6 +115,7 @@ const Home = () => {
                   <a
                     href="https://blog.tentree.com/fact-check-are-there-really-more-trees-today-than-100-years-ago"
                     target="_blank"
+                    rel="noreferrer"
                     className="text-dark"
                   >
                     tentree
@@ -139,6 +143,7 @@ const Home = () => {
               <a
                 href="https://teamtrees.org/"
                 target="_blank"
+                rel="noreferrer"
                 className="text-white"
               >
                 #teamtrees
@@ -162,10 +167,11 @@ const Home = () => {
                   <a
                     href="https://www.worldwildlife.org/initiatives/forests"
                     target="_blank"
+                    rel="noreferrer"
                     className="text-dark"
                   >
                     WWF
-                    </a>
+                  </a>
                 </cite>
               </small>
             </footer>
@@ -196,28 +202,36 @@ const Home = () => {
             <div className="org-wrapper">
               <a
                 href="https://trees4trees.org/"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src="https://trees4trees.org/wp-content/uploads/2020/07/logo-t4t-optimized.png" />
               </a>
             </div>
             <div className="org-wrapper">
               <a
                 href="https://teamtrees.org/"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src="https://teamtrees.org/img/logo.png" />
               </a>
             </div>
             <div className="org-wrapper">
               <a
                 href="https://onetreeplanted.org/"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src="https://cdn.shopify.com/s/files/1/0326/7189/files/OTP_H_BW_WHITE_RGB_06e3d9eb-937c-4c8c-889d-afdf495242db_410x.png" className="invert-color" />
               </a>
             </div>
             <div className="org-wrapper">
               <a
                 href="https://friendsoftrees.org/"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img src="https://e5p3y2s2.stackpathcdn.com/wp-content/uploads/2017/07/Friends-Of-Trees-Logo.png" />
               </a>
             </div>
@@ -241,7 +255,7 @@ const Home = () => {
       }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

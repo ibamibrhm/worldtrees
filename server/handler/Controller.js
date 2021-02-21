@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require('@prisma/client');
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 module.exports = {
   init: async (socket, updatedTree) => {
@@ -10,34 +10,34 @@ module.exports = {
       } else {
         const tree = await prisma.tree.findFirst({
           orderBy: {
-            id: 'desc'
+            id: 'desc',
           },
           select: {
             total_tree: true,
-            updated_at: true
-          }
-        })
-        tree.total_tree = tree.total_tree.toString()
+            updated_at: true,
+          },
+        });
+        tree.total_tree = tree.total_tree.toString();
         socket.emit('tree', tree);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
   cron: async function (socket) {
     try {
       const latestData = await prisma.tree.findFirst({
         orderBy: {
-          id: 'desc'
+          id: 'desc',
         },
         select: {
-          id: true
-        }
-      })
+          id: true,
+        },
+      });
 
       const updatedTree = await prisma.tree.update({
         where: {
-          id: latestData.id
+          id: latestData.id,
         },
         data: {
           total_tree: {
@@ -48,20 +48,20 @@ module.exports = {
              * 
              * treeCutPerSecond = Math.round(marginTreePerYear / 365 / 86400)
             */
-            decrement: 19020 // tree cut perminute = treeCutPerSecond: 317 * 60
-          }
+            decrement: 19020, // tree cut perminute = treeCutPerSecond: 317 * 60
+          },
         },
         select: {
           total_tree: true,
-          updated_at: true
-        }
-      })
-      updatedTree.total_tree = updatedTree.total_tree.toString()
+          updated_at: true,
+        },
+      });
+      updatedTree.total_tree = updatedTree.total_tree.toString();
 
-      this.init(socket, updatedTree)
+      this.init(socket, updatedTree);
     } catch (error) {
-      console.log(error)
-      res.status(500).json(error)
+      console.log(error);
+      res.status(500).json(error);
     }
-  }
-}
+  },
+};

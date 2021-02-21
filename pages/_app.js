@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 const MainApp = ({ Component, pageProps }) => {
   return (
@@ -21,6 +21,7 @@ const MainApp = ({ Component, pageProps }) => {
       }
       `}</style>
     </>
-  )
-}
-export default MainApp
+  );
+};
+
+export default MainApp;

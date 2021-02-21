@@ -5,7 +5,7 @@ const next = require('next');
 const Controller = require('./handler/Controller');
 const CronJob = require('cron').CronJob;
 
-const treeHandler = require('./handler/tree')
+const treeHandler = require('./handler/tree');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -17,12 +17,12 @@ if (!dev) {
 }
 
 io.on('connection', socket => {
-  console.log('connected', socket.id)
-  io.emit('init', Controller.init(socket))
+  console.log('connected', socket.id);
+  io.emit('init', Controller.init(socket));
 });
 
 const job = new CronJob('* * * * *', () => {
-  io.emit('cron', Controller.cron(io))
+  io.emit('cron', Controller.cron(io));
 }, null, true, 'Asia/Jakarta');
 
 job.start();
@@ -33,11 +33,11 @@ nextApp.prepare().then(() => {
   app.use('/tree', (req, res, next) => {
     if (req.headers.authorization !== process.env.MASTER_TOKEN) {
       return res.status(401).json({
-        message: 'Unauthorized'
-      })
+        message: 'Unauthorized',
+      });
     }
-    next()
-  }, treeHandler)
+    next();
+  }, treeHandler);
 
   app.get('*', (req, res) => {
     return nextHandler(req, res);
