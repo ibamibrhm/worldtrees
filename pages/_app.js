@@ -5,7 +5,10 @@ const MainApp = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>WorldTrees - Realtime World Tress Counter</title>
-        <meta name="description" content="A website to provide realtime data how many trees out there in this Earth" />
+        <meta
+          name="description"
+          content="A website to provide realtime data about how many trees out there in this Earth"
+        />
         <link rel="icon" href="/worldtree.svg" />
         <link
           rel="stylesheet"

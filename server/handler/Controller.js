@@ -45,7 +45,7 @@ module.exports = {
              * cutDownTreePerYear = 15000000000
              * replantTreePerYear = 5000000000
              * marginTreePerYear = cutDownTreePerYear - replantTreePerYear
-             * 
+             *
              * treeCutPerSecond = Math.round(marginTreePerYear / 365 / 86400)
             */
             decrement: 19020, // tree cut perminute = treeCutPerSecond: 317 * 60

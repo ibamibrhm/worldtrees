@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import io from 'socket.io-client';
+import Organization from '../components/Organization';
 
 const socket = io();
 
@@ -16,32 +17,34 @@ const Home = () => {
     });
   }, []);
 
-  if (!tree.updated_at) {
-    return null;
-  }
-
   return (
-    <div className="container my-3">
+    <main className="container my-3">
       <h1 className="text-center">WorldTrees</h1>
-      <div className="tree-box d-flex justify-content-center mt-3">
-        <img src="worldtree.svg" />
+      <div className="d-flex justify-content-center mt-3">
+        <img src="/worldtree.svg" />
       </div>
-      <div className="card my-3 text-center shadow-lg">
+      <header className="card my-3 text-center shadow-lg">
         <div className="card-body">
-          <h3 className="card-text">
-            There are estimated <br />
-            <u>{Number(tree.total_tree).toLocaleString('id')}</u> <br />
-            <span>Trees in the World</span>
-          </h3>
-          <small className="card-text text-muted" title="DD/MM/YYYY">
-            Last update: {moment(new Date(tree.updated_at)).format('DD/MM/YYYY, HH:mm:ss')}
-          </small>
+          {
+            !tree.updated_at ? <img src="/loading.svg" /> : (
+              <>
+                <h3 className="card-text">
+                  There are estimated <br />
+                  <u>{Number(tree.total_tree).toLocaleString('id')}</u> <br />
+                  <span>Trees in the World</span>
+                </h3>
+                <small className="card-text text-muted" title="DD/MM/YYYY">
+                  Last update: {moment(tree.updated_at).format('DD/MM/YYYY, HH:mm:ss')}
+                </small>
+              </>
+            )
+          }
         </div>
-      </div>
+      </header>
 
-      <div className="card-columns">
-        <div className="card">
-          <div className="card-body text-center pb-0">
+      <section className="card-columns">
+        <article className="card text-center">
+          <div className="card-body pb-0">
             <h5 className="card-title m-0">
               Global Forest Cover
             </h5>
@@ -56,9 +59,9 @@ const Home = () => {
               src="https://eoimages.gsfc.nasa.gov/images/imagerecords/86000/86986/globaltreecover10pct_etm_2000_2009_front.jpg"
             />
           </a>
-        </div>
+        </article>
 
-        <div className="card text-center">
+        <article className="card text-center">
           <blockquote className="blockquote mb-0 card-body">
             <p>The Planet Has 3 Trillion Trees, but They Could Be Gone in 300 Years</p>
             <footer className="blockquote-footer">
@@ -76,18 +79,18 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
+        </article>
 
-        <div className="card text-center bg-danger text-white">
+        <article className="card text-center bg-danger text-white">
           <div className="card-body">
             <h2 className="card-title">EVERY SECOND</h2>
             <p className="card-text">Man Cut Down 317 Trees</p>
           </div>
-        </div>
+        </article>
 
-        <div className="card text-center">
+        <article className="card text-center">
           <blockquote className="blockquote mb-0 card-body">
-            <p>Deforestation is the second-leading cause of climate change after burning fossil fuels
+            <p>Deforestation is the second-leading cause of climate change after burning fossil fuel
               and accounts for nearly 20 percent of all greenhouse gas emissions</p>
             <footer className="blockquote-footer">
               <small>
@@ -104,9 +107,9 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
+        </article>
 
-        <div className="card text-center bg-warning">
+        <article className="card text-center bg-warning">
           <blockquote className="blockquote mb-0 card-body">
             <p>Humans cut down approximately 15 billion trees a year and re-plant about 5 billion</p>
             <footer className="blockquote-footer">
@@ -124,9 +127,9 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
+        </article>
 
-        <div className="card text-right">
+        <article className="card text-right">
           <blockquote className="blockquote mb-0 card-body">
             <p>The natural environment sustains the life of all beings universally</p>
             <footer className="blockquote-footer">
@@ -135,9 +138,9 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
+        </article>
 
-        <div className="card text-center bg-success text-white">
+        <article className="card text-center bg-success text-white">
           <div className="card-body">
             <p className="card-text">
               <a
@@ -153,10 +156,10 @@ const Home = () => {
               trees worldwide in 2020
             </p>
           </div>
-        </div>
+        </article>
 
-        <div className="card">
-          <blockquote className="blockquote mb-0 card-body text-center">
+        <article className="card text-center">
+          <blockquote className="blockquote mb-0 card-body">
             <p>
               80% of the world’s known terrestrial plant and animal species can be found in forests.
               A square kilometer of forest may be home to more than 1.000 species
@@ -176,9 +179,9 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
+        </article>
 
-        <div className="card text-right">
+        <article className="card text-right">
           <blockquote className="blockquote mb-0 card-body">
             <p>The Earth is what we all have in common</p>
             <footer className="blockquote-footer">
@@ -187,10 +190,10 @@ const Home = () => {
               </small>
             </footer>
           </blockquote>
-        </div>
-      </div>
+        </article>
+      </section>
 
-      <div className="card my-3 text-center shadow-lg">
+      <footer className="card my-3 text-center shadow-lg">
         <div className="card-body">
           <h3 className="card-text">
             You Can Save the World
@@ -198,63 +201,28 @@ const Home = () => {
           <h4 className="card-text">
             Start Plant the Tree
           </h4>
+          <hr />
           <div className="d-flex flex-md-row flex-column justify-content-around align-items-center">
-            <div className="org-wrapper">
-              <a
-                href="https://trees4trees.org/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="https://trees4trees.org/wp-content/uploads/2020/07/logo-t4t-optimized.png" />
-              </a>
-            </div>
-            <div className="org-wrapper">
-              <a
-                href="https://teamtrees.org/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="https://teamtrees.org/img/logo.png" />
-              </a>
-            </div>
-            <div className="org-wrapper">
-              <a
-                href="https://onetreeplanted.org/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="https://cdn.shopify.com/s/files/1/0326/7189/files/OTP_H_BW_WHITE_RGB_06e3d9eb-937c-4c8c-889d-afdf495242db_410x.png" className="invert-color" />
-              </a>
-            </div>
-            <div className="org-wrapper">
-              <a
-                href="https://friendsoftrees.org/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="https://e5p3y2s2.stackpathcdn.com/wp-content/uploads/2017/07/Friends-Of-Trees-Logo.png" />
-              </a>
-            </div>
+            <Organization
+              link="https://trees4trees.org"
+              image="https://trees4trees.org/wp-content/uploads/2020/07/logo-t4t-optimized.png"
+            />
+            <Organization
+              link="https://teamtrees.org"
+              image="https://teamtrees.org/img/logo.png"
+            />
+            <Organization
+              link="https://onetreeplanted.org"
+              image="https://media.pagefly.io/file/get/otp-logo-long-greenpng-1519919839601.png"
+            />
+            <Organization
+              link="https://friendsoftrees.org"
+              image="https://e5p3y2s2.stackpathcdn.com/wp-content/uploads/2017/07/Friends-Of-Trees-Logo.png"
+            />
           </div>
         </div>
-      </div>
-
-      <style jsx>{`
-      .invert-color {
-        filter: invert(100%);
-      }
-      .org-wrapper {
-        width: 150px;
-        height: 90px;
-        display: flex;
-        align-items: center;
-      }
-      .org-wrapper img {
-        max-width: 100%;
-        height: auto;
-      }
-      `}</style>
-    </div>
+      </footer>
+    </main>
   );
 };
 
