@@ -18,11 +18,11 @@ if (!dev) {
 
 io.on('connection', socket => {
   console.log('connected', socket.id);
-  io.emit('init', Controller.init(socket));
+  Controller.getTree(socket);
 });
 
 const job = new CronJob('* * * * *', () => {
-  io.emit('cron', Controller.cron(io));
+  Controller.cron(io);
 }, null, true, 'Asia/Jakarta');
 
 job.start();
