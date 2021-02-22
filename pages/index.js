@@ -222,6 +222,15 @@ const Home = () => {
           </div>
         </div>
       </footer>
+
+      <style jsx>{`
+      header > div {
+        min-height: 171px;
+      }
+      header > div > img {
+        max-height: 130px;
+      }
+      `}</style>
     </main>
   );
 };
