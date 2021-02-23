@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import io from 'socket.io-client';
+import Image from 'next/image';
 import Organization from '../components/Organization';
 
 const socket = io();
@@ -21,12 +22,12 @@ const Home = () => {
     <main className="container my-3">
       <h1 className="text-center">WorldTrees</h1>
       <div className="d-flex justify-content-center mt-3">
-        <img src="/worldtree.svg" />
+        <Image src="/worldtree.svg" width={161} height={166} />
       </div>
       <header className="card my-3 text-center shadow-lg">
         <div className="card-body">
           {
-            !tree.updated_at ? <img src="/loading.svg" /> : (
+            !tree.updated_at ? <Image src="/loading.svg" width={120} height={120} /> : (
               <>
                 <h3 className="card-text">
                   There are estimated <br />
