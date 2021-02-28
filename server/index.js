@@ -21,7 +21,7 @@ io.on('connection', socket => {
   Controller.getTree(socket);
 });
 
-const job = new CronJob('* * * * *', () => {
+const job = new CronJob('* * * * * *', () => {
   Controller.cron(io);
 }, null, true, 'Asia/Jakarta');
 

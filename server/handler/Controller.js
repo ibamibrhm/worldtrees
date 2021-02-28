@@ -18,10 +18,10 @@ module.exports = {
        * cutDownTreePerYear = 15000000000
        * replantTreePerYear = 5000000000
        * marginTreePerYear = cutDownTreePerYear - replantTreePerYear
-       * treeCutPerSecond = Math.round(marginTreePerYear / 365 / 86400)
+       * treeCutPerSecond = Math.round(marginTreePerYear / 365 / 86400) = 317
        * treeCutperminute = treeCutPerSecond: 317 * 60 => 19020
       */
-      await prisma.$executeRaw('UPDATE tree SET total_tree = total_tree - 19020, updated_at = UTC_TIMESTAMP ORDER BY id DESC LIMIT 1');
+      await prisma.$executeRaw('UPDATE tree SET total_tree = total_tree - 317, updated_at = UTC_TIMESTAMP ORDER BY id DESC LIMIT 1');
       this.getTree(socket);
     } catch (error) {
       console.log(error);
